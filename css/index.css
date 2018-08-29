@@ -1,9 +1,7 @@
-html {
-  height: 100%;
-}
-
+html,
 body {
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 /* The side navigation menu */
@@ -25,7 +23,7 @@ body {
 }
 
 .main-move {
-  margin-left: 20%;
+  margin-left: 20%; /* Moves main when opens sidenav */
 }
 
 .main-normal {
@@ -52,6 +50,16 @@ body {
   color: #f1f1f1;
 }
 
+.none {
+  display: none !important;
+}
+
+div#carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Position and style the close button (top right corner) */
 .sidenav .closebtn {
   position: absolute;
@@ -65,14 +73,15 @@ body {
 #main {
   transition: margin-left 0.5s;
   width: 100%;
-  height: 100%;
+  height: 96%;
 }
 
 #main-content {
-  height: 100%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 20px;
 }
 
@@ -100,26 +109,110 @@ hr {
   margin-bottom: 0rem;
 }
 
-div#sub-main{
+/* Images footer */
+
+#footer-main div:nth-child(1) > img {
+  width: 16em !important;
+}
+
+#footer-main div:nth-child(2) > img {
+  width: 8em !important;
+}
+
+div#sub-main {
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-direction: column;
   width: auto;
   padding: 24px;
   overflow-y: auto;
   height: auto;
   border-radius: 3px;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
-.carousel{
-  width: 60%;
+.carousel {
+  width: 65% !important;
+}
+
+.preloader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #818181;
+  position: fixed;
+  z-index: 100;
+}
+
+#footer-main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}
+
+.sidenav {
+  padding-top: 100px;
+}
+.sidenav a {
+  font-size: 18px;
+}
+
+.footer-img {
+  padding: 10px;
+}
+
+/* PRELOADER */
+
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #dfc;
+  border-color: #dfc transparent #dfc transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-width: 450px) {
+@media screen and (min-width: 200px) and (orientation: portrait) {
+  .nav {
+    height: 3em;
+  }
+
+  #main,
+  #main-content {
+    height: auto;
+  }
+
   .sidenav {
     padding-top: 100px;
   }
@@ -128,15 +221,29 @@ div#sub-main{
   }
 
   .sidenav-open {
-    width: 80%;
+    width: 100%;
   }
 
   .main-move {
     margin-left: 0px;
   }
+
+  .carousel {
+    width: 100% !important;
+  }
+
+  #footer-main div:nth-child(1) > img {
+    width: 10em !important;
+  }
+
+  #footer-main div:nth-child(2) > img {
+    width: 6em !important;
+  }
 }
 
-@media screen and (min-width: 1023px) {
+/* IPAD */
+
+@media screen and (min-width: 700px) and (orientation: portrait) {
   .sidenav {
     padding-top: 100px;
   }
@@ -150,5 +257,55 @@ div#sub-main{
 
   .main-move {
     margin-left: 24%;
+  }
+
+  .carousel {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1020px) and (orientation: landscape) {
+  .sidenav {
+    padding-top: 100px;
+  }
+  .sidenav a {
+    font-size: 14px;
+  }
+
+  .sidenav-open {
+    width: 24%;
+  }
+
+  .main-move {
+    margin-left: 24%;
+  }
+
+  .carousel {
+    width: 100% !important;
+  }
+
+  #main-content {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1023px) and (orientation: landscape) {
+  .sidenav {
+    padding-top: 100px;
+  }
+  .sidenav a {
+    font-size: 14px;
+  }
+
+  .sidenav-open {
+    width: 24%;
+  }
+
+  .main-move {
+    margin-left: 24%;
+  }
+
+  .carousel {
+    width: 70% !important;
   }
 }
